@@ -74,6 +74,13 @@ Player prices are fetched from `https://www.fut.gg/api/fut/players/v2/26/` using
 
 ## Changelog
 
+### v0.0.3 — bilingual TR/EN support
+- **Language switcher** in the header — pixel art Turkey 🇹🇷 and England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 flag buttons
+- Full **English translation** of all UI text (labels, placeholders, buttons, results)
+- Custom pixel art SVG flags (`flag-tr.svg`, `flag-en.svg`) — `shape-rendering="crispEdges"`, consistent style
+- `i18n.ts` type-safe translation system + `LangContext` React context
+- All components use `useLang()` hook — language switch is instant, no reload
+
 ### v0.0.2 — pixel art UI
 - Full **arthurball '26** brand identity with pixel art logo
 - **Press Start 2P** pixel font throughout

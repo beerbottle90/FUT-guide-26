@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 13" shape-rendering="crispEdges">
+  <!-- white background -->
+  <rect width="20" height="13" fill="#ffffff"/>
+  <!-- red horizontal bar (St George's cross) -->
+  <rect x="0" y="5" width="20" height="3" fill="#cf0000"/>
+  <!-- red vertical bar -->
+  <rect x="8" y="0" width="4" height="13" fill="#cf0000"/>
+</svg>

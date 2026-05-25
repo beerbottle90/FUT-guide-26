@@ -12,6 +12,7 @@ build/
 backend/.env
 v0.0.1/backend/.env
 v0.0.2/backend/.env
+v0.0.3/backend/.env
 
 # Node / frontend
 frontend/node_modules/
@@ -20,6 +21,8 @@ v0.0.1/frontend/node_modules/
 v0.0.1/frontend/dist/
 v0.0.2/frontend/node_modules/
 v0.0.2/frontend/dist/
+v0.0.3/frontend/node_modules/
+v0.0.3/frontend/dist/
 
 # OS
 .DS_Store
