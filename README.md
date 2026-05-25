@@ -1,79 +1,93 @@
-# FUT Arthur Guide ⚽
+# arthurball '26
 
-AI-powered EA FC 26 Ultimate Team advisor. Upload screenshots or ask questions to get expert advice on squads, SBCs, and the transfer market.
+> AI-powered EA FC 26 Ultimate Team advisor — screenshot analysis, squad building, SBC solving, live market prices.
+
+![arthurball '26 logo](v0.0.2/frontend/public/arthurball-26.png)
+
+---
 
 ## Features
 
 | Tab | What it does |
 |-----|-------------|
-| 📸 Ekran Analizi | Upload a FUT screenshot — Claude analyzes your squad/SBC/market and gives advice |
-| 👥 Kadro Kur | Enter budget + preferences → Claude recommends an optimal squad with player names and prices |
-| 🧩 SBC Çöz | Enter SBC requirements → Claude finds the cheapest solution |
-| 📈 Market | Ask market questions; optional live player price lookup via fut.gg |
+| 📸 EKRAN | Upload a FUT screenshot — Claude Vision analyzes your squad, SBC, or market screen |
+| 👥 KADRO | Budget + preferences → Claude recommends an optimal squad with prices and chemistry |
+| 🧩 SBC | Enter SBC requirements → Claude finds the cheapest solution |
+| 📈 MARKET | Ask market questions with live fut.gg player prices |
 
 ## Stack
 
-- **Backend** — Python 3.11 · FastAPI · AsyncAnthropic (`claude-opus-4-7`)
-- **Frontend** — React 18 · TypeScript · Vite (no UI library, plain CSS)
-- **Live data** — fut.gg API via `curl_cffi` (Cloudflare bypass)
-- **AI** — Claude Opus 4.7 with adaptive thinking for all 4 features + vision for screenshot analysis
+| Layer | Tech |
+|-------|------|
+| Backend | Python 3.11 · FastAPI · `AsyncAnthropic` |
+| AI | `claude-opus-4-7` · adaptive thinking · vision |
+| Live data | fut.gg API · `curl_cffi` Chrome TLS impersonation |
+| Frontend | React 18 · TypeScript · Vite · Press Start 2P font |
 
-## Setup
+## Quick Start
 
-### 1. Clone
-
+### Backend
 ```bash
-git clone https://github.com/beerbottle90/FUT-guide-26.git
-cd FUT-guide-26
-```
-
-### 2. Backend
-
-```bash
-cd backend
-cp .env.example .env          # then fill in your Anthropic API key
+cd v0.0.2/backend
+cp .env.example .env        # add your ANTHROPIC_API_KEY
 python -m pip install -r requirements.txt
 python -m uvicorn main:app --reload
 # → http://localhost:8000
 ```
 
-**`.env` keys:**
-
-| Key | Where to get it |
-|-----|----------------|
-| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) |
-| `FUTDB_API_KEY` | not required (fut.gg is used instead) |
-
-### 3. Frontend
-
+### Frontend
 ```bash
-cd frontend
+cd v0.0.2/frontend
 npm install
 npm run dev
 # → http://localhost:5173
 ```
 
+> **Important:** Run backend in its own terminal window — keep it open while using the app.
+
+## API Keys
+
+| Key | Required | Where |
+|-----|----------|-------|
+| `ANTHROPIC_API_KEY` | Yes | [console.anthropic.com](https://console.anthropic.com) |
+| `FUTDB_API_KEY` | No | fut.gg is used instead (no key needed) |
+
 ## Architecture
 
 ```
-Browser (React + Vite :5173)
-        │
-        ▼
-FastAPI (:8000)
-├── POST /api/analyze        ← image + question → Claude Vision
-├── POST /api/squad/build    ← budget + prefs   → Claude
-├── POST /api/sbc/solve      ← requirements     → Claude
-├── POST /api/market/advice  ← question         → fut.gg prices + Claude
-└── GET  /api/market/player/{name}  ← live fut.gg search
+Browser  →  React + Vite  :5173
+                │
+                ▼
+         FastAPI  :8000
+         ├── POST /api/analyze          Claude Vision
+         ├── POST /api/squad/build      Claude
+         ├── POST /api/sbc/solve        Claude
+         ├── POST /api/market/advice    fut.gg + Claude
+         └── GET  /api/market/player/{name}   fut.gg live search
 ```
 
-## Live Data — fut.gg
+## Live Data
 
-Player prices are fetched from `https://www.fut.gg/api/fut/players/v2/26/` using `curl_cffi` with Chrome TLS impersonation. No API key required. The market tab shows real-time prices that Claude uses for advice.
+Player prices are fetched from `https://www.fut.gg/api/fut/players/v2/26/` using `curl_cffi` with Chrome TLS fingerprint impersonation — no API key required.
 
-## Version
+---
 
-`v0.0.1` — initial release
+## Changelog
+
+### v0.0.2 — pixel art UI
+- Full **arthurball '26** brand identity with pixel art logo
+- **Press Start 2P** pixel font throughout
+- Black background + bright green saha-çizgisi card borders
+- Logo as fixed background watermark and favicon
+- Live fut.gg player prices (curl_cffi, Cloudflare bypass)
+- Fixed player rating field (`overall` not `rating`)
+- Global FastAPI exception handler with detailed error traces
+- Frontend 120s timeout with Turkish error messages
+
+### v0.0.1 — initial release
+- FastAPI backend with 4 endpoints
+- React + TypeScript frontend with 4 tabs
+- Claude Opus 4.7 + adaptive thinking + vision
 
 ---
 
