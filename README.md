@@ -74,3 +74,7 @@ Player prices are fetched from `https://www.fut.gg/api/fut/players/v2/26/` using
 ## Version
 
 `v0.0.1` — initial release
+
+---
+
+**Designer:** Ertuğ Demir · **Coded by:** [Claude Code](https://claude.ai/claude-code)
